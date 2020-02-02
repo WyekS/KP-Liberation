@@ -36,9 +36,10 @@ if ((isNil {player getVariable "bis_revive_ehHandleHeal"} || isDedicated) && !(b
 };
 
 if ( GRLIB_IED_ > 0 ) then {
-	execVM "ied.sqf";
+	execVM "scripts\ied.sqf";
 };
 
 if ( GRLIB_IED_ < 0 ) then {
 	{_x setMarkerAlphaLocal 0} foreach ["iedMkr0"];
 };
+
