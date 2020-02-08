@@ -114,7 +114,7 @@ KP_liberation_preset_blufor = 0;
 15 = CUP Chernarussian Movement of the Red Star
 16 = CUP Armed Forces of the Russian Federation (MSV - EMR)
 17 = CUP Armed Forces of the Russian Federation (Modern MSV) */
-KP_liberation_preset_opfor = 0;
+KP_liberation_preset_opfor = 4;
 
 /* Resistance preset:
 0  = Custom (default vanilla FIA)
@@ -126,7 +126,7 @@ KP_liberation_preset_opfor = 0;
 6  = Unsung
 7  = CUP Takistani Locals
 8  = CUP National Party of Chernarus */
-KP_liberation_preset_resistance = 0;
+KP_liberation_preset_resistance = 4;
 
 /* Civilians preset:
 0  = Custom (default vanilla)
@@ -137,7 +137,7 @@ KP_liberation_preset_resistance = 0;
 5  = Unsung
 6  = CUP Takistani Civilians
 7  = CUP Chernarussian Civilians */
-KP_liberation_preset_civilians = 0;
+KP_liberation_preset_civilians = 2;
 
 /* Which arsenal preset should be used?
 0  = Use the default blacklist method (defined below)
@@ -189,7 +189,7 @@ GRLIB_defended_buildingpos_part = 0.4;                                  // Multi
 GRLIB_battlegroup_size = 6;                                             // Size of enemy battlegroups.
 GRLIB_vulnerability_timer = 1200;                                       // Time in seconds how long a captured sector is vulnerable to enemy troops.
 GRLIB_radiotower_size = 2500;                                           // Radio Tower scanning range.
-GRLIB_surrender_chance = 80;                                            // Chance that enemy infantry will surrender after heavy losses are encountered.
+GRLIB_surrender_chance = 50;                                            // Chance that enemy infantry will surrender after heavy losses are encountered.
 
 GRLIB_civilians_amount = 10;                                            // Civilian count multiplier.
 GRLIB_cleanup_delay = 1200;                                             // Time in seconds until bodies of dead soldiers are cleaned up.

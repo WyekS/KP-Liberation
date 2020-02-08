@@ -4,9 +4,6 @@
 if (isClass (configfile >> "CfgPatches" >> "ace_common")) then {KP_liberation_ace = true; diag_log "[KP LIBERATION] ACE detected. Deactivating resupply and weather scripts from Liberation."} else {KP_liberation_ace = false};
 
 /* Not saveable params */
-// IED función añadida
-GRLIB_IED_ = ["IED", 1] call bis_fnc_getParamValue;
-
 GRLIB_param_wipe_savegame_1 = ["WipeSave1",0] call bis_fnc_getParamValue;
 GRLIB_param_wipe_savegame_2 = ["WipeSave2",0] call bis_fnc_getParamValue;
 KP_liberation_civinfo_debug = ["DebugCivInfo",0] call bis_fnc_getParamValue;
@@ -39,14 +36,14 @@ if(isServer) then {
     GET_PARAM(bis_reviveParam_bleedOutDuration, "ReviveBleedOutDuration", 180);
     GET_PARAM(bis_reviveParam_forceRespawnDuration, "ReviveForceRespawnDuration", 10);
 
-    GET_PARAM(GRLIB_difficulty_modifier, "Difficulty", 3);
-    GET_PARAM(GRLIB_time_factor, "DayDuration", 24);
+    GET_PARAM(GRLIB_difficulty_modifier, "Difficulty", 2);
+    GET_PARAM(GRLIB_time_factor, "DayDuration", 12);
     GET_PARAM(GRLIB_resources_multiplier, "ResourcesMultiplier", 3);
     GET_PARAM(GRLIB_unitcap, "Unitcap", 2);
     GET_PARAM(GRLIB_civilian_activity, "civilians", 1);
-    GET_PARAM(GRLIB_halo_param, "HaloJump", 0);
+    GET_PARAM(GRLIB_halo_param, "HaloJump", 1);
     GET_PARAM(GRLIB_cleanup_vehicles, "CleanupVehicles", 2);
-    GET_PARAM(GRLIB_csat_aggressivity, "Aggressivity", 3);
+    GET_PARAM(GRLIB_csat_aggressivity, "Aggressivity", 2);
     GET_PARAM(GRLIB_weather_param, "Weather", 3);
     GET_PARAM(GRLIB_maximum_fobs, "MaximumFobs", 26);
     GET_PARAM(GRLIB_max_squad_size, "MaxSquadSize", 10);
@@ -59,23 +56,23 @@ if(isServer) then {
     GET_PARAM_BOOL(KP_liberation_cr_param_buildings, "CR_Building", 0);
     GET_PARAM_BOOL(KP_liberation_ailogistics, "AiLogistics", 1);
     GET_PARAM_BOOL(KP_liberation_clear_cargo, "ClearCargo", 1);
-    GET_PARAM_BOOL(KP_liberation_limited_zeus, "LimitedZeus", 0);
+    GET_PARAM_BOOL(KP_liberation_limited_zeus, "LimitedZeus", 1);
     GET_PARAM_BOOL(KP_liberation_arsenalUsePreset, "ArsenalUsePreset", 1);
-    GET_PARAM_BOOL(KP_liberation_mapmarkers, "MapMarkers", 0);
-    GET_PARAM_BOOL(KP_liberation_mobilerespawn, "MobileRespawn", 0);
-    GET_PARAM_BOOL(KP_liberation_mobilearsenal, "MobileArsenal", 0);
+    GET_PARAM_BOOL(KP_liberation_mapmarkers, "MapMarkers", 1);
+    GET_PARAM_BOOL(KP_liberation_mobilerespawn, "MobileRespawn", 1);
+    GET_PARAM_BOOL(KP_liberation_mobilearsenal, "MobileArsenal", 1);
     GET_PARAM_BOOL(KP_liberation_arsenal_type, "ArsenalType", 0);
     GET_PARAM_BOOL(KP_liberation_fog_param, "VanillaFog", 1);
     GET_PARAM_BOOL(KP_liberation_fob_vehicle, "FirstFobVehicle", 0);
 
     GET_PARAM_BOOL(GRLIB_adaptive_opfor, "AdaptToPlayercount", 1);
-    GET_PARAM_BOOL(GRLIB_deployment_cinematic, "DeploymentCinematic", 0);
+    GET_PARAM_BOOL(GRLIB_deployment_cinematic, "DeploymentCinematic", 1);
     GET_PARAM_BOOL(GRLIB_fatigue, "Fatigue", 1);
-    GET_PARAM_BOOL(GRLIB_introduction, "Introduction", 0);
+    GET_PARAM_BOOL(GRLIB_introduction, "Introduction", 1);
     GET_PARAM_BOOL(GRLIB_teamkill_penalty, "TeamkillPenalty", 0);
     GET_PARAM_BOOL(GRLIB_build_first_fob, "FirstFob", 0);
     GET_PARAM_BOOL(GRLIB_permissions_param, "Permissions", 1);
-    GET_PARAM_BOOL(GRLIB_use_whitelist, "Whitelist", 1);
+    GET_PARAM_BOOL(GRLIB_use_whitelist, "Whitelist", 0);
     GET_PARAM_BOOL(GRLIB_shorter_nights, "ShorterNights", 0);
     GET_PARAM_BOOL(GRLIB_blufor_defenders, "BluforDefenders", 1);
     GET_PARAM_BOOL(GRLIB_autodanger, "Autodanger", 0);
