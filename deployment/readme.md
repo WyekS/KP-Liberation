@@ -33,7 +33,7 @@ npm run deploy
 npm run watch
 ```
 
-- Map (_not yet available_): with a second parameter you can easily copy specified `mission.sqm` file from the collection basefiles to your desired destination path.
+- Map: with a second parameter you can easily copy specified `mission.sqm` file from the collection basefiles to your desired destination path.
 
 ```shell
 npm run map takistan
