@@ -1,0 +1,16 @@
+{
+	"name": "wt_deployment_tools",
+	"version": "1.0.0",
+	"description": "WolfTeam Deployment Tools",
+	"scripts": {
+		"deploy": "node src/index.js deploy",
+		"watch": "node src/index.js watch",
+		"map": "node src/index.js deployMap"
+	},
+	"author": "WolfTeam",
+	"license": "ISC",
+	"dependencies": {
+		"chokidar": "^3.4.0",
+		"fs-extra": "^9.0.0"
+	}
+}
