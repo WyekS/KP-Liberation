@@ -48,3 +48,9 @@ Temporary Items
 
 # Build directory
 build/
+
+# Node
+/deployment/node_modules
+
+# IntelliJ configuration
+/.idea
