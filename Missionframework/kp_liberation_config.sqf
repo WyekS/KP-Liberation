@@ -8,13 +8,24 @@ KP_liberation_medical_vehicles = [
     "B_T_Truck_01_medical_F",
     "B_Truck_01_medical_F",
     "C_Van_02_medevac_F",
+    "CUP_O_M113_Med_TKA",
     "CUP_B_BMP2_AMB_CDF",
+    "CUP_O_BMP2_AMB_CHDKZ",
+    "CUP_O_BMP2_AMB_sla",
     "CUP_B_HMMWV_Ambulance_USA",
     "CUP_B_HMMWV_Ambulance_USMC",
     "CUP_B_LR_Ambulance_CZ_D",
     "CUP_B_LR_Ambulance_CZ_W",
     "CUP_B_LR_Ambulance_GB_D",
     "CUP_B_LR_Ambulance_GB_W",
+    "CUP_O_LR_Ambulance_TKA",
+    "CUP_B_FV432_GB_Ambulance",
+    "CUP_B_S1203_Ambulance_CDF",
+    "CUP_B_UH1Y_MEV_USMC",
+    "CUP_B_UH60M_Unarmed_FFV_MEV_US",
+    "CUP_B_BMP2_AMB_CZ",
+    "CUP_B_BMP2_AMB_CZ_Des",
+    "CUP_B_HMMWV_Ambulance_ACR",
     "gm_gc_army_ural375d_medic_win",
     "gm_gc_army_ural375d_medic",
     "gm_ge_army_u1300l_medic_win_rc",
@@ -90,11 +101,14 @@ If you want to change a preset, it's recommended to set all four presets to 0 an
 22 = CUP Chernarus Defense Force
 23 = CUP Army of the Czech Republic (Desert)
 24 = CUP Army of the Czech Republic (Woodland)
-25 = SFP (Woodland)
-26 = SFP (Desert)
-27 = LDF (Contact DLC)
-28 = FFAA */
-KP_liberation_preset_blufor = 0;
+25 = CUP Chernarussian Movement of the Red Star
+26 = CUP Sahrani Liberation Army
+27 = CUP Takistani Army
+28 = SFP (Woodland)
+29 = SFP (Desert)
+30 = LDF (Contact DLC)
+31 = FFAA */
+KP_liberation_preset_blufor = 28;
 
 /* OPFOR preset:
 0  = Custom (default vanilla CSAT)
@@ -114,8 +128,11 @@ KP_liberation_preset_blufor = 0;
 14 = CUP Takistani Army
 15 = CUP Chernarussian Movement of the Red Star
 16 = CUP Armed Forces of the Russian Federation (MSV - EMR)
-17 = CUP Armed Forces of the Russian Federation (Modern MSV) */
-KP_liberation_preset_opfor = 0;
+17 = CUP Armed Forces of the Russian Federation (Modern MSV)
+18 = CUP Chernarus Defense Force
+19 = CUP British Armed Forces (Desert)
+20 = CUP British Armed Forces (Woodland) */
+KP_liberation_preset_opfor = 4;
 
 /* Resistance preset:
 0  = Custom (default vanilla FIA)
@@ -143,16 +160,14 @@ KP_liberation_preset_civilians = 0;
 /* Which arsenal preset should be used?
 0  = Use the default blacklist method (defined below)
 1  = Custom arsenal preset (edit the custom.sqf in the arsenal_presets\ folder to change things for your own versions and tweaks)
-2  = Killah Potatoes Gaming Community arsenal preset
-3  = RHS USAF arsenal preset
-4  = RHS USAF arsenal preset with ACE
-5  = RHS USAF arsenal preset with ACE and ACRE
-6  = 3cbBAF and RHS USAF arsenal preset
-7  = GM West arsenal preset
-8  = GM East arsenal preset
-9  = CSAT arsenal preset
-10 = Unsung US arsenal preset
-11 = SFP arsenal preset */
+2  = RHS USAF arsenal preset
+3  = 3cbBAF and RHS USAF arsenal preset
+4  = GM West arsenal preset
+5  = GM East arsenal preset
+6  = CSAT arsenal preset
+7  = Unsung US arsenal preset
+8  = SFP arsenal preset
+9  = BWMod arsenal preset */
 KP_liberation_arsenal = 0;
 
 /* - Fuel consumption settings.
@@ -166,6 +181,8 @@ KP_liberation_fuel_max = 45;
 /* - Gameplay constant settings.
 Name of the savegame namespace inside of the [ServerProfileName].vars.Arma3Profile file. */
 GRLIB_save_key = "KP_LIBERATION_" + (toUpper worldName) + "_SAVEGAME";
+
+KP_liberation_save_interval = 60;                                       // Interval in seconds for automatic save.
 
 GRLIB_side_friendly = WEST;                                             // Friendly side.
 GRLIB_side_enemy = EAST;                                                // Enemy side.
@@ -229,6 +246,24 @@ KP_liberation_resistance_ambush_chance = 25;                            // Chanc
 // When playing on this map, it'll create a clearance (remove terrain objects) in a 15m radius around the battlegroup/reinforcements spawnpoint.
 KP_liberation_battlegroup_clearance = [
     "song_bin_tanh"
+];
+
+/* Slot independent commander action access.
+The Steam UIDs entered in this array will allow corresponding players to access the commander actions (rights, production, etc.),
+even if they are not in the commander slot. */
+KP_liberation_commander_actions = [
+    /*
+    Example:
+    "1324678",
+    "5468711",
+    "2156347"
+    */
+];
+
+/* Whitelist for BI support framework access.
+Same format as for the commander actions. */
+KP_liberation_suppMod_whitelist = [
+
 ];
 
 /* - Default arsenal blacklist method.
@@ -476,7 +511,7 @@ KP_liberation_allowed_items_extension = [
 
 /* - Configuration settings for crates transported by vehicles.
 Format = ["classname", distance behind vehicle to unload crate, attachTo positions for each box],    */
-box_transport_config = [
+KPLIB_transportConfigs = [
     ["B_Heli_Transport_03_F", -8, [0,2.2,-1], [0,0.5,-1], [0,-1.2,-1]],
     ["B_Heli_Transport_03_unarmed_F", -8, [0,2.2,-1], [0,0.5,-1], [0,-1.2,-1]],
     ["B_T_Truck_01_cargo_F", -6.5, [0,-0.4,0.4], [0,-2.1,0.4], [0,-3.8,0.4]],
@@ -537,6 +572,10 @@ box_transport_config = [
     ["CUP_O_Ural_Open_TKA", -6.5, [0,-0.5,0], [0,-2.5,0]],
     ["CUP_O_Ural_SLA", -6.5, [0,-0.5,0], [0,-2.5,0]],
     ["CUP_O_Ural_TKA", -6.5, [0,-0.5,0], [0,-2.5,0]],
+    ["CUP_O_Mi8_SLA_1", -6.5, [0,2.7,-1.5], [00,0.6,-1.5]],
+    ["CUP_O_MI6A_CHDKZ", -8, [0,6,-0.6], [0,4.3,-0.6], [0,2.5,-0.6], [0,0.5,-0.6], [0,-1.2,-0.6], [0,-3.1,-0.6]],
+    ["CUP_O_MI6A_TKA", -8, [0,6,-0.6], [0,4.3,-0.6], [0,2.5,-0.6], [0,0.5,-0.6], [0,-1.2,-0.6], [0,-3.1,-0.6]],
+    ["CUP_O_C130J_Cargo_TKA",-10,[0,0.6,-3.76],[0,-0.9,-3.76],[0,-2.5,-3.76],[0,-4.2,-3.76],[0,2.2,-3.76],[0,3.8,-3.76],[0,5.5,-3.76]],
     ["gm_gc_army_ural4320_cargo_win", -5, [0.0722656,-0.539063,-0.1], [0.076416,-1.76904,-0.1], [0.0773926,-2.85742,-0.1]],
     ["gm_gc_army_ural4320_cargo", -5, [0.0722656,-0.539063,-0.1], [0.076416,-1.76904,-0.1], [0.0773926,-2.85742,-0.1]],
     ["gm_gc_bgs_ural4320_cargo", -5, [-0.0373535,-0.535156,-0.1], [-0.0344238,-1.76611,-0.1], [-0.0334473,-2.85547,-0.1]],
@@ -642,7 +681,7 @@ box_transport_config = [
 
 /* Various other settings.
 Everything the AI troups should be able to resupply from. */
-ai_resupply_sources = [
+KPLIB_aiResupplySources = [
     "B_APC_Tracked_01_CRV_F",
     "B_Slingload_01_Ammo_F",
     "B_T_APC_Tracked_01_CRV_F",
@@ -658,6 +697,7 @@ ai_resupply_sources = [
     "CUP_O_Ural_Reammo_CHDKZ",
     "CUP_O_Ural_Reammo_SLA",
     "CUP_O_Ural_Reammo_TKA",
+    "CUP_O_V3S_Rearm_TKA",
     "gm_gc_army_ural4320_reammo_win",
     "gm_gc_army_ural4320_reammo",
     "gm_ge_army_kat1_451_reammo_win",
@@ -697,6 +737,9 @@ vehicle_repair_sources = [
     "CUP_B_MTVR_Repair_USMC",
     "CUP_B_T810_Repair_CZ_DES",
     "CUP_B_T810_Repair_CZ_WDL",
+    "CUP_O_V3S_Repair_TKA",
+    "CUP_O_Ural_Repair_SLA",
+    "CUP_O_Ural_Repair_CHDKZ",
     "gm_gc_army_ural4320_repair_win",
     "gm_gc_army_ural4320_repair",
     "gm_ge_army_u1300l_repair_win",
@@ -739,6 +782,7 @@ vehicle_rearm_sources = [
     "CUP_O_Ural_Reammo_CHDKZ",
     "CUP_O_Ural_Reammo_SLA",
     "CUP_O_Ural_Reammo_TKA",
+    "CUP_O_V3S_Rearm_TKA",
     "gm_gc_army_ural4320_reammo_win",
     "gm_gc_army_ural4320_reammo",
     "gm_ge_army_kat1_451_reammo_win",
@@ -781,6 +825,7 @@ vehicle_refuel_sources = [
     "CUP_O_Ural_Refuel_CHDKZ",
     "CUP_O_Ural_Refuel_SLA",
     "CUP_O_Ural_Refuel_TKA",
+    "CUP_O_V3S_Refuel_TKA",
     "gm_gc_army_ural375d_refuel_win",
     "gm_gc_army_ural375d_refuel",
     "gm_ge_army_kat1_451_refuel_win",
@@ -815,6 +860,13 @@ boats_names = [
     "O_Boat_Transport_01_F",
     "O_T_Boat_Armed_01_hmg_F",
     "O_T_Boat_Transport_01_F",
+    "CUP_B_MK10_GB",
+    "CUP_B_RHIB_USMC",
+    "CUP_B_RHIB2Turret_USMC",
+    "CUP_B_LCU1600_USMC",
+    "CUP_O_LCVP_SLA",
+    "CUP_O_LCVP_VIV_SLA",
+    "CUP_O_PBX_SLA",
     "rhsusf_mkvsoc",
     "sfp_gruppbat",
     "sfp_rbb_norrkoping",
@@ -824,6 +876,155 @@ boats_names = [
     "uns_pbr_mk18",
     "uns_pbr",
     "UNS_Zodiac_W"
+];
+
+// Classnames of artillery vehicles, which should be added to the support module
+// (Needed/Favorized as BIS_SUPP_eligible_Artillery from the support module isn't broadcasted over the network and may hold unwanted vehicles)
+KP_liberation_suppMod_artyVeh = [
+    "B_G_Mortar_01_F",
+    "B_MBT_01_arty_F",
+    "B_MBT_01_mlrs_F",
+    "B_Mortar_01_F",
+    "B_Ship_Gun_01_F",
+    "B_T_MBT_01_arty_F",
+    "B_T_MBT_01_mlrs_F",
+    "B_T_Mortar_01_F",
+    "CUP_B_2b14_82mm_ACR",
+    "CUP_B_2b14_82mm_CDF",
+    "CUP_B_BM21_CDF",
+    "CUP_B_D30_CDF",
+    "CUP_B_L16A2_BAF_DDPM",
+    "CUP_B_L16A2_BAF_MPT",
+    "CUP_B_L16A2_BAF_WDL",
+    "CUP_B_M1129_MC_MK19_Desert_Slat",
+    "CUP_B_M1129_MC_MK19_Desert",
+    "CUP_B_M1129_MC_MK19_Woodland_Slat",
+    "CUP_B_M1129_MC_MK19_Woodland",
+    "CUP_B_M119_US",
+    "CUP_B_M119_USMC",
+    "CUP_B_M252_US",
+    "CUP_B_M252_USMC",
+    "CUP_B_M270_DPICM_BAF_DES",
+    "CUP_B_M270_DPICM_BAF_WOOD",
+    "CUP_B_M270_DPICM_USA",
+    "CUP_B_M270_DPICM_USMC",
+    "CUP_B_M270_HE_BAF_DES",
+    "CUP_B_M270_HE_BAF_WOOD",
+    "CUP_B_M270_HE_USA",
+    "CUP_B_M270_HE_USMC",
+    "CUP_B_RM70_CZ",
+    "CUP_I_2b14_82mm_TK_GUE",
+    "CUP_I_D30_TK_GUE",
+    "CUP_I_Hilux_armored_MLRS_TK",
+    "CUP_I_Hilux_armored_podnos_TK",
+    "CUP_I_Hilux_armored_UB32_TK",
+    "CUP_I_Hilux_MLRS_TK",
+    "CUP_I_Hilux_podnos_TK",
+    "CUP_I_Hilux_UB32_TK",
+    "CUP_I_M119_RACS",
+    "CUP_I_M252_RACS",
+    "CUP_I_M270_DPICM_AAF",
+    "CUP_I_M270_DPICM_RACS",
+    "CUP_I_M270_HE_AAF",
+    "CUP_I_M270_HE_RACS",
+    "CUP_O_2b14_82mm_ChDKZ",
+    "CUP_O_2b14_82mm_RU",
+    "CUP_O_2b14_82mm_SLA",
+    "CUP_O_2b14_82mm_TK_INS",
+    "CUP_O_2b14_82mm_TK",
+    "CUP_O_BM21_CHDKZ",
+    "CUP_O_BM21_RU",
+    "CUP_O_BM21_SLA",
+    "CUP_O_BM21_TKA",
+    "CUP_O_D30_ChDKZ",
+    "CUP_O_D30_RU",
+    "CUP_O_D30_SLA",
+    "CUP_O_D30_TK_INS",
+    "CUP_O_D30_TK",
+    "CUP_O_Hilux_armored_MLRS_TK_INS",
+    "CUP_O_Hilux_armored_podnos_TK_INS",
+    "CUP_O_Hilux_armored_UB32_TK_INS",
+    "CUP_O_Hilux_MLRS_TK_INS",
+    "CUP_O_Hilux_podnos_TK_INS",
+    "CUP_O_Hilux_UB32_TK_INS",
+    "I_E_Mortar_01_F",
+    "I_E_Truck_02_MRL_F",
+    "I_G_Mortar_01_F",
+    "I_Mortar_01_F",
+    "I_Truck_02_MRL_F",
+    "O_G_Mortar_01_F",
+    "O_MBT_02_arty_F",
+    "O_Mortar_01_F",
+    "O_T_MBT_02_arty_ghex_F",
+    "rhs_2b14_82mm_msv",
+    "rhs_2b14_82mm_vdv",
+    "rhs_2b14_82mm_vmf",
+    "rhs_2s1_tv",
+    "rhs_2s1_vmf",
+    "rhs_2s3_tv",
+    "RHS_BM21_MSV_01",
+    "RHS_BM21_VDV_01",
+    "RHS_BM21_VMF_01",
+    "RHS_BM21_VV_01",
+    "rhs_D30_msv",
+    "rhs_D30_vdv",
+    "rhs_D30_vmf",
+    "RHS_M119_D",
+    "RHS_M119_WD",
+    "RHS_M252_D",
+    "RHS_M252_USMC_D",
+    "RHS_M252_USMC_WD",
+    "RHS_M252_WD",
+    "rhsusf_m109_usarmy",
+    "rhsusf_m109d_usarmy",
+    "rhsusf_M142_usarmy_D",
+    "rhsusf_M142_usarmy_WD",
+    "rhsusf_M142_usmc_WD",
+    "Uns_D20_artillery",
+    "Uns_D30_artillery",
+    "uns_M1_81mm_mortar_arty",
+    "uns_M1_81mm_mortar_pvp",
+    "uns_M1_81mm_mortar",
+    "Uns_M102_artillery",
+    "uns_m107sp",
+    "uns_m110sp",
+    "uns_M113_M30_HQ",
+    "uns_M113_M30",
+    "Uns_M114_artillery",
+    "uns_m1941_82mm_mortarNVA_arty",
+    "uns_m1941_82mm_mortarNVA_pvp",
+    "uns_m1941_82mm_mortarNVA",
+    "uns_m1941_82mm_mortarVC",
+    "uns_M2_60mm_mortar_pvp",
+    "uns_M2_60mm_mortar",
+    "uns_M30_107mm_mortar",
+    "uns_Type55_mortar"
+];
+
+// Objects which are spawned as intel objects for pickup
+KPLIB_intelObjectClasses = [
+    "Land_File_research_F",
+    "Land_Document_01_F"
+];
+
+// Classnames of buildings inside military sectors, which are valid to hold intel items
+KPLIB_intelBuildingClasses = [
+    "Land_Cargo_House_V1_F",
+    "Land_Cargo_House_V2_F",
+    "Land_Cargo_House_V3_F",
+    "Land_Cargo_HQ_V1_F",
+    "Land_Cargo_HQ_V2_F",
+    "Land_Cargo_HQ_V3_F",
+    "Land_i_Barracks_V1_dam_F",
+    "Land_i_Barracks_V1_F",
+    "Land_i_Barracks_V2_dam_F",
+    "Land_i_Barracks_V2_F",
+    "Land_Medevac_house_V1_F",
+    "Land_Medevac_HQ_V1_F",
+    "Land_MilOffices_V1_F",
+    "Land_Research_house_V1_F",
+    "Land_Research_HQ_F",
+    "Land_u_Barracks_V2_F"
 ];
 
 // Large storage area placement position offsets.
@@ -895,4 +1096,3 @@ GRLIB_blufor_cap = (GRLIB_blufor_cap * GRLIB_unitcap) min 100;
 GRLIB_sector_cap = GRLIB_sector_cap * GRLIB_unitcap;
 GRLIB_battlegroup_cap = GRLIB_battlegroup_cap * GRLIB_unitcap;
 GRLIB_patrol_cap = GRLIB_patrol_cap * GRLIB_unitcap;
-GRLIB_offload_diag = false;
