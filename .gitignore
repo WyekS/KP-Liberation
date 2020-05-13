@@ -60,3 +60,6 @@ kp_steam*.log
 
 # IntelliJ configuration
 /.idea
+
+# IDE config
+.vscode

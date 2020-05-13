@@ -1,0 +1,11 @@
+{
+    "frameworkOriginFolder": "C:\/Users\/anton\/Proyectos\/Wolf\/repos\/KP-Liberation\/Missionframework",
+    "frameworkDestinationFolder": "C:\/Users\/anton\/Documents\/Arma 3 - Other Profiles\/Tte%2e%20AnWeno\/mpmissions\/wt_Liberation.Takistan",
+    "basefilesOriginFolder": "C:\/Users\/anton\/Proyectos\/Wolf\/repos\/KP-Liberation\/Missionbasefiles",
+    "mapFolderAliases": {
+        "vr": "kp_liberation_devkit.VR",
+        "altis": "kp_liberation.Altis",
+        "lythium": "kp_liberation.lythium",
+        "takistan": "kp_liberation.Takistan"
+    }
+}
