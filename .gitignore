@@ -47,10 +47,19 @@ Temporary Items
 .apdisk
 
 # Build directory
-build/
+/build/
+/_tools/build/
+/_tools/node_modules/
+
+# KP-Steam
+steam_appid.txt
+kp_steam*.log
 
 # Node
 /deployment/node_modules
 
 # IntelliJ configuration
 /.idea
+
+# IDE config
+.vscode
